@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.grid {
+  padding: 16px;
+}
+
+.grid__row {
+  display: flex;
+}
+
+.grid__row__square {
+  box-sizing: border-box;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 32px;
+  height: 32px;
+}
+
+.grid__row__square--top {
+  border-top: 1px solid black;
+}
+
+.grid__row__square--left {
+  border-left: 1px solid black;
+}
