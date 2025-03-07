@@ -7,8 +7,15 @@ document.addEventListener("mouseover", handleMouseOver);
 document.addEventListener("click", handleClick);
 
 function handleMouseOver(event) {
-  if (event.target.className.includes("grid__row__square")) {
+  const isSquare = event.target.className.includes("grid__row__square");
+  const isFilledSquare = isSquare && event.target.className.includes("filled");
+  const isOpaqueSquare = isFilledSquare &&
+    !event.target.style.backgroundColor.includes("a");
+  if (isSquare && !isFilledSquare) {
+    event.target.style.backgroundColor = getRandomColor();
     event.target.className += " grid__row__square--filled";
+  } else if (isFilledSquare && !isOpaqueSquare) {
+    increaseOpacity(event.target);
   }
 }
 
@@ -61,4 +68,22 @@ function clearGrid() {
   while (grid.firstChild) {
     grid.removeChild(grid.lastChild);
   }
+}
+
+function increaseOpacity(square) {
+  const squareColor = square.style.backgroundColor;
+  const rgba = squareColor.split(",");
+  const red = parseFloat(rgba[0].substring(5));
+  const green = parseFloat(rgba[1]);
+  const blue = parseFloat(rgba[2]);
+  const opacity = parseFloat(rgba[3]);
+  square.style.backgroundColor =
+    `rgba(${red}, ${green}, ${blue}, ${opacity + 0.1})`;
+}
+
+function getRandomColor() {
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+  return `rgba(${red}, ${green}, ${blue}, 0.1)`;
 }
