@@ -3,20 +3,31 @@
   padding: 0;
 }
 
+.resize-button {
+  display: block;
+  margin: 32px auto;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .grid {
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 560px;
+  height: 560px;
+  margin: 32px auto;
 }
 
 .grid__row {
   display: flex;
+  flex: 1;
 }
 
 .grid__row__square {
-  box-sizing: border-box;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
-  width: 32px;
-  height: 32px;
+  flex: 1;
 }
 
 .grid__row__square--top {
