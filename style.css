@@ -26,3 +26,7 @@
 .grid__row__square--left {
   border-left: 1px solid black;
 }
+
+.grid__row__square--filled {
+  background-color: black;
+}

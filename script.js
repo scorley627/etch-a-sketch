@@ -1,4 +1,11 @@
 makeGrid();
+document.addEventListener("mouseover", handleMouseOver);
+
+function handleMouseOver(event) {
+  if (event.target.className.includes("grid__row__square")) {
+    event.target.className += " grid__row__square--filled";
+  }
+}
 
 function makeGrid() {
   for (let row = 0; row < 16; ++row) {
